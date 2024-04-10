@@ -12,7 +12,6 @@ async function enviarMensagem(telefone, mensagem) {
   try {
     const client = await wppconnect.create({
       session: 'sales',
-      browserPath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
       statusFind: async (statusSession) => {
         if (statusSession === 'inChat') {
             console.log('Cliente está Pronto pro envio.');
