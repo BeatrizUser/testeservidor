@@ -12,13 +12,18 @@ async function enviarMensagem(telefone, mensagem) {
   try {
     const client = await wppconnect.create({
       session: 'sales',
+      browserPath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
       statusFind: async (statusSession) => {
         if (statusSession === 'inChat') {
             console.log('Cliente está Pronto pro envio.');
-            await client.sendText(telefone + '@c.us', mensagem);
-            console.log('Mensagem enviada com sucesso!');
-            enviado = true;
-            await client.close()
+            const res = await client.sendText(telefone + '@c.us', mensagem);
+            if(res){
+              console.log('Mensagem enviada com sucesso!');
+              enviado = true;
+            }else{
+              console.log('Mensagem não enviada!');
+              enviado = false;
+            }
         }
       },
     });
