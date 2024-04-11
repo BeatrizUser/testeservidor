@@ -15,7 +15,6 @@ async function criarCliente() {
     try {
         client = await wppconnect.create({
             session: 'sales',
-            executablePath: puppeteer.executablePath(), // Use o caminho do executável do Chrome do Puppeteer
             statusFind: async (statusSession) => {
                 if (statusSession === 'inChat') {
                     console.log('Cliente está pronto para envio.');
