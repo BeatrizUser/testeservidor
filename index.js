@@ -17,7 +17,7 @@ async function enviarMensagem(telefone, mensagem) {
       statusFind: async (statusSession) => {
         if (statusSession === 'inChat') {
           console.log('Cliente está pronto para envio.');
-          const res = await enviarMensagem(telefone, mensagem, client)
+          const res = await enviartexto(telefone, mensagem, client)
           if (res) {
             console.log(res);
             return true;
@@ -34,7 +34,7 @@ async function enviarMensagem(telefone, mensagem) {
   }
 }
 
-async function enviarMensagem(telefone, mensagem, client) {
+async function enviartexto(telefone, mensagem, client) {
   await client.sendText(telefone + '@c.us', mensagem);
 }
 
