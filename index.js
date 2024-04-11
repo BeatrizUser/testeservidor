@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const wppconnect = require('@wppconnect-team/wppconnect');
+const puppeteer = require('puppeteer');
 
 const app = express();
 const PORT = process.env.PORT || 5500;
@@ -12,7 +13,7 @@ async function enviarMensagem(telefone, mensagem) {
   try {
     const client = await wppconnect.create({
       session: 'sales',
-      executablePath: 'chromedriver',
+      executablePath: puppeteer.executablePath(), // Use o caminho do executável do Chrome do Puppeteer
       statusFind: async (statusSession) => {
         if (statusSession === 'inChat') {
           console.log('Cliente está pronto para envio.');
