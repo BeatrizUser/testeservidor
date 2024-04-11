@@ -17,9 +17,9 @@ async function enviarMensagem(telefone, mensagem) {
       statusFind: async (statusSession) => {
         if (statusSession === 'inChat') {
           console.log('Cliente está pronto para envio.');
-          const res = await client.sendText(telefone + '@c.us', mensagem);
+          const res = await enviarMensagem(telefone, mensagem, client)
           if (res) {
-            console.log('Mensagem enviada com sucesso!');
+            console.log(res);
             return true;
           } else {
             console.log('Mensagem não enviada!');
@@ -32,6 +32,10 @@ async function enviarMensagem(telefone, mensagem) {
     console.error('Erro ao enviar mensagem:', error);
     return false;
   }
+}
+
+async function enviarMensagem(telefone, mensagem, client) {
+  await client.sendText(telefone + '@c.us', mensagem);
 }
 
 app.post('/enviar-mensagem', async (req, res) => {
