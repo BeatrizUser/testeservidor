@@ -4,7 +4,7 @@ const wppconnect = require('@wppconnect-team/wppconnect');
 const puppeteer = require('puppeteer');
 
 const app = express();
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 5500;
 let logado = false
 
 let client = null;
